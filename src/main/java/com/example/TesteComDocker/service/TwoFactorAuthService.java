@@ -16,10 +16,11 @@ public class TwoFactorAuthService {
     }
 
     public String generateQRUrl(String username, String secret) {
+        GoogleAuthenticatorKey key = new GoogleAuthenticatorKey.Builder(secret).build();
         return GoogleAuthenticatorQRGenerator.getOtpAuthURL(
                 "TesteDocker",
                 username,
-                googleAuthenticator.createCredentials(secret)
+                key
         );
     }
 
